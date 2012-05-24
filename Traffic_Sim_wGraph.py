@@ -69,6 +69,7 @@ def simulation(l,time,mv,lane):
     velarray = numpy.zeros((time))
     avgvelocity = numpy.zeros((l))
     avgcurrent = numpy.zeros((l))
+    road = dict()
     distance = dict()
     
 
@@ -76,6 +77,7 @@ def simulation(l,time,mv,lane):
         passdic = traffic2(i+1,l,time,mv,lane)
         velocities = passdic['velocity']
         distance[i] = passdic['distance']
+        road[i] = passdic['road']
         
         for k in range(time): #builds an array of the total velocity at each point in time
             velarray[k] = sum(sum(velocities[:,k,:]))
@@ -98,7 +100,7 @@ def simulation(l,time,mv,lane):
     py.grid(True)
     py.show()
     
-    return distance
+    return distance,road
 
     
 l = 10
@@ -106,5 +108,5 @@ time = 10
 mv = 3
 lane = 1
 
-distance = simulation(l,time,mv,lane)
+trafficinfo = simulation(l,time,mv,lane)
 
