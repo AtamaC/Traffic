@@ -5,7 +5,7 @@ def Space_Time_Plot(l,time,lane,density,trafficinfo):
     
     spacefunctions = dict()
     
-    n = density*l*lane #determines the car number that the user wants to plot
+    n = int(density*l*lane) #determines the car number that the user wants to plot
     
     initpositions = trafficinfo[1][n-1][:,1,:][0]
     print initpositions
@@ -13,8 +13,14 @@ def Space_Time_Plot(l,time,lane,density,trafficinfo):
     k = 0
     for i in range(l):
         if initpositions[i] == 1:
-            spacefunctions[k] = i
+            spacefunctions[k] = [i]
             k += 1
+    
+    
+    # builds a dictionary of lists with all the cars' distance traveled over the length of the simulation
+    for i in range(time):
+        for j in range(n):
+            spacefunctions[j].append(trafficinfo[0][n-1][0,i,j]+spacefunctions[j][i])
     
     print spacefunctions
     
