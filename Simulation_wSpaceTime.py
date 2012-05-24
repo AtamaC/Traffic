@@ -10,5 +10,13 @@ def Space_Time_Plot(l,time,lane,density,trafficinfo):
     initpositions = trafficinfo[1][n-1][:,1,:][0]
     print initpositions
     
+    k = 0
+    for i in range(l):
+        if initpositions[i] == 1:
+            spacefunctions[k] = i
+            k += 1
     
-Space_Time_Plot(l,time,lane,0.4,trafficinfo)
+    print spacefunctions
+    
+    
+Space_Time_Plot(l,time,lane,0.3,trafficinfo)
