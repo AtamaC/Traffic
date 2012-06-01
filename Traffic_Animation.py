@@ -142,24 +142,23 @@ def Traffic_Animation(space,l,time,lane,density):
     import numpy as np
     
     cars = dict()
+    v = dict()
     
     n = int(density*l*lane)
     w = 1200/l
-    window = Tk()
-    canvas = Canvas(window, width = 1200, height = lane*(w+50))
+    window = tk.Tk()
+    canvas = tk.Canvas(window, width = 1200, height = lane*(w+50))
     canvas.pack()
     
     for i in range(n):
         cars[i] = canvas.create_rectangle(w*space[i][0],20,w*space[i][0]+w,20+w,fill="red", tag=i)
-        
-    for k in range(time):
-        for t in range(w):
-            for i in range(n):
-                canvas.move(i,space[i][k],0)
-                canvas.after(20)
-                canvas.update()
-
     
+    for t in range(time - 1):
+        for k in range(n):
+            p1 = space[k][t]
+            p2 = space[k][t+1]
+            v[k] = int((round((p2 - p1)*w/10.0)))
+                
     window.mainloop()
     
 Traffic_Animation(space,l,time,lane,0.5)
