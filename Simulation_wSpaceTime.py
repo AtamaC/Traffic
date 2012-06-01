@@ -1,6 +1,9 @@
 #Need to run simulation function to get trafficinfo variable
 #Density needs to match one of the possible densities from the number of spaces exactly, i.e. if there are 10 spaces then only densities that are multiples of 0.1 are valid.
 
+# l, time, and lane all must match the variables used in Simulation
+# returns information necessary to run the Traffic_Animation function
+
 def Space_Time_Plot(l,time,lane,density,trafficinfo):
     import pylab as py
     
@@ -31,5 +34,4 @@ def Space_Time_Plot(l,time,lane,density,trafficinfo):
     py.title('Traffic Simulation Space/Time Plot for Density %s'%(density))
     py.show()
     
-    
-Space_Time_Plot(l,time,lane,0.5,trafficinfo)
+    return spacefunctions
