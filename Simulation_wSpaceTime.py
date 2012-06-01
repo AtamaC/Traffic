@@ -4,6 +4,8 @@
 # l, time, and lane all must match the variables used in Simulation
 # returns information necessary to run the Traffic_Animation function
 
+# this function currently only operates when a single lane is used
+
 def Space_Time_Plot(l,time,lane,density,trafficinfo):
     import pylab as py
     
